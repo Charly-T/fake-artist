@@ -46,18 +46,6 @@ export default function PlayerList({
 
   return (
     <>
-      <div className="player-list">
-        {players.map((player) => (
-          <PlayerCard
-            word={""}
-            name={player.name}
-            color={player.color}
-            small
-            onClick={() => handleRemovePlayer(player.name)}
-            key={player.color}
-          />
-        ))}
-      </div>
       <input
         type="text"
         placeholder="Name"
@@ -70,12 +58,29 @@ export default function PlayerList({
         onChange={handleColorChange}
       />
 
-      <button disabled={!name || !color} onClick={handleAddPlayer}>
-        Add
-      </button>
-      <button disabled={players.length < minPlayers} onClick={handleStartGame}>
-        Start game
-      </button>
+      <div>
+        <button disabled={!name || !color} onClick={handleAddPlayer}>
+          Add
+        </button>
+        <button
+          disabled={players.length < minPlayers}
+          onClick={handleStartGame}
+        >
+          Start game
+        </button>
+      </div>
+      <div className="player-list">
+        {players.map((player) => (
+          <PlayerCard
+            word={""}
+            name={player.name}
+            color={player.color}
+            small
+            onClick={() => handleRemovePlayer(player.name)}
+            key={player.color}
+          />
+        ))}
+      </div>
     </>
   );
 }
