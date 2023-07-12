@@ -9,7 +9,7 @@ import "./Round.css";
  */
 export default function Round({ round, nextRound }) {
   return (
-    <div className="Game">
+    <div className="Round">
       <h4>
         Round {round.roundNumber} -{" "}
         {round.category.charAt(0).toUpperCase() + round.category.substring(1)}
