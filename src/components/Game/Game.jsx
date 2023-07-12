@@ -36,13 +36,23 @@ const buildRound = (players, roundNumber) => {
   };
 };
 
+const savePlayers = (players) => {
+  localStorage.setItem("players", JSON.stringify(players));
+};
+
+const loadPlayers = () => {
+  const players = localStorage.getItem("players");
+  return players ? JSON.parse(players) : [];
+};
+
 export default function Game() {
   const [game, setGame] = useState({
-    players: [],
+    players: loadPlayers(),
     gameState: "settingUp",
   });
 
   const [round, setRound] = useState(buildRound(game.players));
+
   const MIN_PLAYERS = 3;
 
   const addPlayer = (player) => {
@@ -56,6 +66,7 @@ export default function Game() {
   };
 
   const startGame = () => {
+    savePlayers(game.players);
     setGame({ ...game, gameState: "playing" });
     setRound(buildRound(game.players, 1));
   };
