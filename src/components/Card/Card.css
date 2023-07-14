@@ -6,7 +6,7 @@
   inherits: false;
 }
 
-.player-card {
+.card {
   --red-hue: 0;
   --green-hue: 120;
   --yellow-hue: 60;
@@ -16,12 +16,10 @@
   --purple-hue: 260;
   --blue-hue: 240;
 
-  --card-width: 45vw;
-
   --gradient: linear-gradient(var(--rotate), hsl(var(--card-color), 100%, 75%), hsl(var(--card-color), 75%, 50%) 50%, hsl(var(--card-color), 75%, 25%));
 
-  height: var(--card-width);
-  aspect-ratio: 3 / 4;
+  width: 100%;
+  aspect-ratio: 4 / 3;
   padding: 3px;
   position: relative;
   border-radius: 6px;
@@ -35,12 +33,7 @@
   text-transform: uppercase;
 }
 
-.player-card.small {
-  --card-width: 25vw;
-  font-size: 1rem;
-}
-
-.player-card::before {
+.card::before {
   animation: spin 2.5s linear infinite;
   background-image: linear-gradient(var(--rotate), hsl(var(--card-color), 100%, 75%), hsl(var(--card-color), 75%, 50%) 50%, hsl(var(--card-color), 75%, 25%));
   border-radius: 8px;
@@ -53,22 +46,22 @@
   z-index: -1;
 }
 
-.player-card::after {
+.card::after {
   animation: spin 2.5s linear infinite;
   background-image: linear-gradient(var(--rotate), hsl(var(--card-color), 100%, 75%), hsl(var(--card-color), 75%, 50%) 50%, hsl(var(--card-color), 75%, 25%));
   content: "";
-  filter: blur(calc(var(--card-width) / 6));
+  filter: blur(2vw);
   height: 100%;
   left: 0;
   position: absolute;
   right: 0;
-  top: calc(var(--card-width) / 6);
+  top: 5%;
   transform: scale(0.8);
   z-index: -1;
 }
 
-.player-card .front,
-.player-card .back {
+.card .front,
+.card .back {
   border-radius: 6px;
   position: absolute;
   width: 100%;
@@ -82,33 +75,33 @@
   justify-content: center;
 }
 
-.player-card::after,
-.player-card::before {
+.card::after,
+.card::before {
   transition: transform 1s ease;
 }
 
-.player-card .front {
+.card .front {
   background: #191c29;
   color: hsl(var(--card-color), 75%, 50%);
 }
 
-.player-card .back {
+.card .back {
   transform: rotateY(180deg);
   background: hsl(var(--card-color), 75%, 50%);
   color: #191c29;
 }
 
-.player-card.flipped .front,
-.player-card.flipped::before,
-.player-card.flipped::after {
+.card.flipped .front,
+.card.flipped::before,
+.card.flipped::after {
   transform: rotateY(180deg);
 }
 
-.player-card.flipped .back {
+.card.flipped .back {
   transform: rotateY(0deg);
 }
 
-.player-card .name {
+.card .name {
   text-shadow: 0 0 5px hsl(var(--card-color), 100%, 75%);
 }
 

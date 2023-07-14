@@ -1,4 +1,4 @@
-import PlayerCard from "../PlayerCard/PlayerCard";
+import Card from "../Card/Card";
 import "./ColorSelector.css";
 
 /**
@@ -23,14 +23,12 @@ export default function ColorSelector({ usedColors, selectedColor, onChange }) {
   return (
     <div className="color-selector">
       {availableColors.map((color) => (
-        <PlayerCard
-          word={""}
-          name={""}
+        <Card
           color={color}
-          small
           flipped={color === selectedColor}
-          key={color}
-          onClick={() => onChange(color)}
+          onClick={() => {
+            onChange(color);
+          }}
         />
       ))}
     </div>

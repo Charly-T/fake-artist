@@ -1,13 +1,13 @@
 import { useState } from "react";
 import ColorSelector from "../ColorSelector/ColorSelector";
-import PlayerCard from "../PlayerCard/PlayerCard";
 import "./PlayerList.css";
+import Card from "../Card/Card";
 
 /**
  * @param {Object} props
  * @param {Player[]} props.players
  * @param {(player: Player) => void} props.addPlayer
- * @param {(string) => void} props.removePlayer
+ * @param {(name: string) => void} props.removePlayer
  * @param {() => void} props.startGame
  * @param {number} props.minPlayers
  * @return {JSX.Element}
@@ -71,11 +71,9 @@ export default function PlayerList({
       </div>
       <div className="player-list">
         {players.map((player) => (
-          <PlayerCard
-            word={""}
-            name={player.name}
+          <Card
             color={player.color}
-            small
+            front={player.name}
             onClick={() => handleRemovePlayer(player.name)}
             key={player.color}
           />
