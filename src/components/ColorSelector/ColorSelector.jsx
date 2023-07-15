@@ -20,7 +20,7 @@ const colors = [
  * @return {*}
  */
 export default function ColorSelector({ players, onChange }) {
-  const [possiblePlayers, setPossiblePlayers] = useState(
+  const [colorPlayers, setColorPlayers] = useState(
     colors.map((color) => {
       const player = players?.find((player) => player.color === color);
       return {
@@ -31,7 +31,7 @@ export default function ColorSelector({ players, onChange }) {
   );
 
   const handleNameChange = (color, name) => {
-    const newPlayers = possiblePlayers.map((player) => {
+    const newPlayers = colorPlayers.map((player) => {
       if (player.color === color) {
         return {
           ...player,
@@ -40,13 +40,13 @@ export default function ColorSelector({ players, onChange }) {
       }
       return player;
     });
-    setPossiblePlayers(newPlayers);
+    setColorPlayers(newPlayers);
     onChange(newPlayers.filter((player) => player.name));
   };
 
   return (
     <div className="color-selector">
-      {possiblePlayers.map((player) => (
+      {colorPlayers.map((player) => (
         <ColorSelectorCard
           name={player.name}
           key={player.color}

@@ -30,9 +30,7 @@ export default function ColorSelectorCard({ name, color, onChange }) {
           ref={handleRef}
           className="color-selector-card-input"
           onBlur={() => {
-            if (!name) {
-              setSelected(false);
-            }
+            setSelected(false);
           }}
           value={name}
           onChange={(e) => {
