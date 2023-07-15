@@ -55,16 +55,6 @@ export default function Game() {
 
   const MIN_PLAYERS = 3;
 
-  const addPlayer = (player) => {
-    const newPlayers = [...game.players, player];
-    setGame({ ...game, players: newPlayers });
-  };
-
-  const removePlayer = (name) => {
-    const newPlayers = game.players.filter((player) => player.name !== name);
-    setGame({ ...game, players: newPlayers });
-  };
-
   const startGame = () => {
     savePlayers(game.players);
     setGame({ ...game, gameState: "playing" });
@@ -78,14 +68,13 @@ export default function Game() {
   };
 
   return (
-    <div className="Game">
+    <div className="game">
       {game.gameState === "settingUp" && (
         <PlayerList
           players={game.players}
-          addPlayer={addPlayer}
-          removePlayer={removePlayer}
           startGame={startGame}
           minPlayers={MIN_PLAYERS}
+          updatePlayers={(players) => setGame({ ...game, players })}
         />
       )}
       {game.gameState === "playing" && (
