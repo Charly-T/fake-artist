@@ -28,6 +28,7 @@ export default function ColorSelectorCard({ name, color, onChange }) {
       back={
         <input
           ref={handleRef}
+          tabIndex={selected || name ? 0 : -1}
           className="color-selector-card-input"
           onBlur={() => {
             setSelected(false);
