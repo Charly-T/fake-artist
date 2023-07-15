@@ -24,6 +24,7 @@ export default function ColorSelector({ usedColors, selectedColor, onChange }) {
     <div className="color-selector">
       {availableColors.map((color) => (
         <Card
+          key={color}
           color={color}
           flipped={color === selectedColor}
           onClick={() => {
